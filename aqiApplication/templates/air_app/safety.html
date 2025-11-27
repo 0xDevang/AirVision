@@ -1,0 +1,83 @@
+{% extends 'aqiApplication/base.html' %}
+    {% load static %}
+    {% block extra_head %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 85%;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <h1>Air Quality Safety & Precaution Guide</h1>
+
+    <div class="section">
+        <h2>🫁 Precautions for High AQI Areas</h2>
+        <ul>
+            <li>Avoid outdoor activities during peak pollution hours.</li>
+            <li>Always wear N95 masks while outside.</li>
+            <li>Keep windows closed when AQI is high.</li>
+            <li>Prefer public transport or carpooling.</li>
+            <li>Stay hydrated and avoid exposure for children & elderly.</li>
+            <li>Monitor AQI through official apps and act accordingly.</li>
+            <li>Avoid morning walks during winter smog.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🏠 Improve Indoor Air Quality at Home</h2>
+        <ul>
+            <li>Use HEPA-based air purifiers.</li>
+            <li>Add indoor plants like Aloe Vera, Money Plant, Snake Plant.</li>
+            <li>Clean home regularly using wet dusting.</li>
+            <li>Keep kitchen ventilated and use exhaust fans.</li>
+            <li>Avoid incense sticks, candles, and smoking indoors.</li>
+            <li>Change AC and air purifier filters regularly.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🌳 Keep Your Surroundings Safe</h2>
+        <ul>
+            <li>Plant more trees around your home and community.</li>
+            <li>Reduce usage of personal vehicles.</li>
+            <li>Never burn waste; report waste burning near your area.</li>
+            <li>Promote recycling and sustainable lifestyle habits.</li>
+            <li>Support community cleanliness and pollution-control drives.</li>
+        </ul>
+    </div>
+
+</div>
+
+{% endblock %}

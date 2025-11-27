@@ -1,0 +1,56 @@
+{% extends 'aqiApplication/base.html' %}
+{% block title %}About • AQI Monitor{% endblock %}
+
+{% block content %}
+
+<h2 style="text-align:center; margin-top:20px;">About AQI Monitor</h2>
+
+<div class="dashboard-box" style="width:60%;">
+
+    <h3 style="text-align:center; margin-bottom: 10px; color:#4CAF50;">
+        Your Simple Air Quality Tracking System
+    </h3>
+
+    <p style="line-height:1.6; text-align:justify;">
+        AQI Monitor is a lightweight and fast web application designed to provide 
+        real-time Air Quality Index (AQI) data for major Indian cities. The goal of 
+        this platform is to make essential environmental information easily 
+        accessible to everyone without any complexity.
+    </p>
+
+    <h4 style="margin-top:20px; color:#4CAF50;">What This Website Does:</h4>
+    <ul style="line-height:1.6;">
+        <li>Displays real-time AQI values using the <b>WAQI (World Air Quality Index)</b> API.</li>
+        <li>Shows the dominant pollutant affecting the air quality in each city.</li>
+        <li>Presents the latest update timestamp for transparency.</li>
+        <li>Allows users to search any city directly from the navigation bar.</li>
+        <li>Provides an overview of AQI for several major Indian cities in one place.</li>
+    </ul>
+
+    <h4 style="margin-top:20px; color:#4CAF50;">Why Air Quality Matters:</h4>
+    <p style="line-height:1.6; text-align:justify;">
+        Air pollution has become one of the most critical environmental and public 
+        health challenges in modern cities. Monitoring AQI helps individuals make 
+        informed decisions about outdoor activities, health precautions, and general 
+        well-being. Our purpose is to give you this information instantly and clearly.
+    </p>
+
+    <h4 style="margin-top:20px; color:#4CAF50;">Technology Used:</h4>
+    <ul style="line-height:1.6;">
+        <li><b>Django</b> for backend logic and routing</li>
+        <li><b>HTML + CSS</b> for clean front-end UI</li>
+        <li><b>WAQI API</b> for fetching real-time air data</li>
+        <li><b>Python Requests</b> for API communication</li>
+    </ul>
+
+    <h4 style="margin-top:20px; color:#4CAF50;">Our Vision:</h4>
+    <p style="line-height:1.6; text-align:justify;">
+        The vision behind AQI Monitor is to create a simple, fast, and reliable 
+        interface to help users stay aware of the air they breathe. In future versions, 
+        more features such as live AQI maps, historical trends, graphs, and 
+        notifications may be added.
+    </p>
+
+</div>
+
+{% endblock %}

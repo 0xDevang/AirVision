@@ -1,0 +1,29 @@
+{% extends 'aqiApplication/base.html' %}
+{% block title %}All Cities AQI{% endblock %}
+
+{% block content %}
+<h2 style="text-align:center;">Air Quality — All Major Indian Cities</h2>
+
+<table>
+    <tr>
+        <th>City</th>
+        <th>AQI</th>
+        <th>Dominant Pollutant</th>
+        <th>PM2.5</th>
+        <th>PM10</th>
+        <th>Last Updated</th>
+    </tr>
+
+    {% for row in results %}
+    <tr>
+        <td>{{ row.city }}</td>
+        <td>{{ row.aqi }}</td>
+        <td>{{ row.dominant_pollutant }}</td>
+        <td>{{ row.pm25 }}</td>
+        <td>{{ row.pm10 }}</td>
+        <td>{{ row.time }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

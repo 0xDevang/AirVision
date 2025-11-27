@@ -1,0 +1,64 @@
+{% extends 'aqiApplication/base.html' %}
+    {% load static %}
+    {% block extra_head %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 40px;
+            color: #333;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .chart-container img {
+            display: block;
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        .small-chart {
+            width: 40% !important;
+        }
+    </style>
+    {% endblock %}
+
+{% block content %}
+    <!-- Delhi Chart -->
+    <div class="chart-container">
+        <!--h2>Delhi AQI Variation (2015–2020)</h2-->
+        <img src="/static/{{ delhi_aqi }}">
+    </div>
+
+    <!-- AQI Chart -->
+    <div class="chart-container">
+        <h2>Average AQI by City</h2>
+        <img src="/static/{{ aqi_bar }}">
+    </div>
+
+    <!-- Stations Count by State -->
+    <div class="chart-container">
+        <h2>Stations Count by State</h2>
+        <img src="/static/{{ state_station_bar }}">
+    </div>
+
+    <!-- Active vs Inactive Pie -->
+    <div class="chart-container">
+        <h2>Active vs Inactive Stations</h2>
+        <img src="/static/{{ status_pie }}" class="small-chart">
+    </div>
+
+    {% endblock %}

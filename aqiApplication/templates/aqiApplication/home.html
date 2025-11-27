@@ -1,0 +1,127 @@
+{% extends "aqiApplication/base.html" %}
+
+{% block content %}
+<h2 style="text-align:center;">City Air Quality</h2>
+
+<div class="dashboard-box">
+    
+    <!-- City Name -->
+    <h3 style="text-align:center; margin-top:10px;">
+        {{ result.city }} — AQI Dashboard
+    </h3>
+
+    <!-- AQI Gauge -->
+    <div style="width:250px; margin:auto;">
+        <canvas id="aqiGauge"></canvas>
+    </div>
+
+    <!-- Pollutant Cards -->
+    <div class="pollutant-cards">
+        <div class="pollutant-cards">
+    {% for label, value in pollutants %}
+    <div class="pollutant-card">
+        <h4>{{ label }}</h4>
+        <p>{{ value|default:"N/A" }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+    </div>
+
+    <!-- Pollutant Bar Chart -->
+    <h3 style="text-align:center;">Pollutant Concentrations</h3>
+    <canvas id="pollutantChart"></canvas>
+
+    <!-- Metadata -->
+    <div class="metadata">
+        <h4>Station:</h4>
+        <p>{{ result.station }}</p>
+
+        <h4>Coordinates:</h4>
+        <p>{{ result.geo }}</p>
+
+        <h4>Last Updated:</h4>
+        <p>{{ result.time }}</p>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+// AQI Gauge Chart
+const ctxGauge = document.getElementById('aqiGauge');
+
+new Chart(ctxGauge, {
+    type: 'doughnut',
+    data: {
+        labels: ['AQI', 'Remaining'],
+        datasets: [{
+            data: [{{ result.aqi }}, 500 - {{ result.aqi }}],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        cutout: '70%',
+        plugins: { legend: { display: false } }
+    }
+});
+
+// Pollutant Bar Chart
+const ctxPollutants = document.getElementById('pollutantChart');
+
+new Chart(ctxPollutants, {
+    type: 'bar',
+    data: {
+        labels: ['PM2.5', 'PM10', 'O₃', 'NO₂', 'SO₂', 'CO'],
+        datasets: [{
+            label: 'µg/m³',
+            data: [
+                {{ result.pm25|default:"null" }},
+                {{ result.pm10|default:"null" }},
+                {{ result.o3|default:"null" }},
+                {{ result.no2|default:"null" }},
+                {{ result.so2|default:"null" }},
+                {{ result.co|default:"null" }}
+            ]
+        }]
+    },
+});
+</script>
+
+<style>
+.dashboard-box {
+    width: 75%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background: #fff;
+}
+
+.pollutant-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.pollutant-card {
+    width: 150px;
+    padding: 15px;
+    margin: 10px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.metadata {
+    margin-top: 30px;
+    padding: 15px;
+    background: #eef6ee;
+    border-radius: 8px;
+}
+</style>
+
+{% endblock %}
